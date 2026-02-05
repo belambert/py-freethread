@@ -72,8 +72,7 @@ def run_threaded(tasks: list[float], num_workers: int) -> float:
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
         futures = [
-            executor.submit(simulate_io_operation, i, duration)
-            for i, duration in enumerate(tasks)
+            executor.submit(simulate_io_operation, i, duration) for i, duration in enumerate(tasks)
         ]
 
         for future in futures:

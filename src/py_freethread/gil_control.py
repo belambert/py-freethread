@@ -105,10 +105,7 @@ def monitor_thread_execution(func, *args, duration: float = 1.0):
         total_iterations += r["iterations"]
 
     overall_throughput = total_iterations / total_time
-    print(
-        f"\nOverall: {total_iterations:,} iterations, "
-        f"{overall_throughput:.0f} iter/sec"
-    )
+    print(f"\nOverall: {total_iterations:,} iterations, " f"{overall_throughput:.0f} iter/sec")
 
     # Analyze parallelism
     expected_parallel_throughput = results[0]["throughput"] * num_threads

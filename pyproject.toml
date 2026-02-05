@@ -16,6 +16,20 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
+[dependency-groups]
+dev = [
+    "black>=24.0.0",
+    "isort>=5.13.0",
+]
+
 [build-system]
 requires = ["uv_build>=0.9.3,<0.10.0"]
 build-backend = "uv_build"
+
+[tool.black]
+line-length = 100
+target-version = ["py313", "py314"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
