@@ -1,13 +1,20 @@
 [project]
 name = "py-freethread"
 version = "0.1.0"
-description = "Add your description here"
+description = "Python 3.13+ free-threading (no-GIL) demonstration and examples"
 readme = "README.md"
 authors = [
     { name = "Ben Lambert", email = "blambert@gmail.com" }
 ]
 requires-python = ">=3.13"
 dependencies = []
+keywords = ["python", "threading", "gil", "free-threading", "nogil", "parallelism"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 
 [build-system]
 requires = ["uv_build>=0.9.3,<0.10.0"]
