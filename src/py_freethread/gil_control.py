@@ -74,12 +74,14 @@ def monitor_thread_execution(func, *args, duration: float = 1.0):
         elapsed = time.perf_counter() - start
 
         with lock:
-            results.append({
-                "thread_id": thread_id,
-                "iterations": iterations,
-                "time": elapsed,
-                "throughput": iterations / elapsed
-            })
+            results.append(
+                {
+                    "thread_id": thread_id,
+                    "iterations": iterations,
+                    "time": elapsed,
+                    "throughput": iterations / elapsed,
+                }
+            )
 
     num_threads = 4
     threads = [threading.Thread(target=worker, args=(i,)) for i in range(num_threads)]
@@ -95,18 +97,22 @@ def monitor_thread_execution(func, *args, duration: float = 1.0):
     print("\nPer-Thread Results:")
     total_iterations = 0
     for r in results:
-        print(f"  Thread {r['thread_id']}: "
-              f"{r['iterations']:,} iterations, "
-              f"{r['throughput']:.0f} iter/sec")
-        total_iterations += r['iterations']
+        print(
+            f"  Thread {r['thread_id']}: "
+            f"{r['iterations']:,} iterations, "
+            f"{r['throughput']:.0f} iter/sec"
+        )
+        total_iterations += r["iterations"]
 
     overall_throughput = total_iterations / total_time
-    print(f"\nOverall: {total_iterations:,} iterations, "
-          f"{overall_throughput:.0f} iter/sec")
+    print(
+        f"\nOverall: {total_iterations:,} iterations, "
+        f"{overall_throughput:.0f} iter/sec"
+    )
 
     # Analyze parallelism
-    expected_parallel_throughput = results[0]['throughput'] * num_threads
-    parallelism_ratio = overall_throughput / results[0]['throughput']
+    expected_parallel_throughput = results[0]["throughput"] * num_threads
+    parallelism_ratio = overall_throughput / results[0]["throughput"]
 
     print(f"\nParallelism Analysis:")
     print(f"  Single-thread throughput: {results[0]['throughput']:.0f} iter/sec")
@@ -141,7 +147,7 @@ def cpu_intensive_work():
     """Simple CPU-intensive work for monitoring."""
     total = 0
     for i in range(1000):
-        total += i ** 2
+        total += i**2
     return total
 
 

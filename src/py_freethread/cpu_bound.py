@@ -7,8 +7,8 @@ with and without the GIL for CPU-intensive tasks.
 """
 
 import sys
-import time
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 
@@ -43,7 +43,9 @@ def main():
     print(f"  Speedup:    {speedup:.2f}x")
 
     if gil_enabled:
-        print("\n⚠️  GIL is ENABLED - threads cannot execute CPU-bound code in parallel")
+        print(
+            "\n⚠️  GIL is ENABLED - threads cannot execute CPU-bound code in parallel"
+        )
         print("   Speedup is limited by the GIL")
     else:
         print("\n✓  GIL is DISABLED - threads can execute in parallel!")
@@ -70,11 +72,15 @@ def run_threaded(tasks: list[int], num_workers: int) -> float:
     start = time.perf_counter()
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
-        futures = [executor.submit(cpu_intensive_task, i, n) for i, n in enumerate(tasks)]
+        futures = [
+            executor.submit(cpu_intensive_task, i, n) for i, n in enumerate(tasks)
+        ]
 
         for future in futures:
             task_id, result, duration = future.result()
-            print(f"Task {task_id}: fib({tasks[task_id]}) = {result} (took {duration:.3f}s)")
+            print(
+                f"Task {task_id}: fib({tasks[task_id]}) = {result} (took {duration:.3f}s)"
+            )
 
     total_time = time.perf_counter() - start
     print(f"Total time: {total_time:.3f}s")

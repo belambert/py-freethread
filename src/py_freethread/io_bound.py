@@ -8,8 +8,8 @@ the GIL is released during I/O operations.
 """
 
 import sys
-import time
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 
@@ -71,8 +71,10 @@ def run_threaded(tasks: list[float], num_workers: int) -> float:
     start = time.perf_counter()
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
-        futures = [executor.submit(simulate_io_operation, i, duration)
-                   for i, duration in enumerate(tasks)]
+        futures = [
+            executor.submit(simulate_io_operation, i, duration)
+            for i, duration in enumerate(tasks)
+        ]
 
         for future in futures:
             task_id, elapsed = future.result()
