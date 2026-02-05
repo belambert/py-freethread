@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
-"""
-GIL Control and Monitoring
-
-Demonstrates how to check GIL status and provides utilities for monitoring
-threading behavior.
-"""
+"""GIL control and monitoring - check status and measure thread parallelism."""
 
 import sys
 import threading
 import time
-from typing import Optional
 
 
 def main():
@@ -52,11 +46,7 @@ def print_gil_info():
 
 
 def monitor_thread_execution(func, *args, duration: float = 1.0):
-    """
-    Monitor thread execution patterns.
-
-    This helps visualize whether threads are truly running in parallel.
-    """
+    """Monitor thread execution patterns to visualize parallelism."""
     print(f"\n\nMonitoring thread execution for {duration}s...")
     print("=" * 50)
 

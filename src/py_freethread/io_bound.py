@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""
-I/O-Bound Workload Example
-
-Demonstrates threading behavior for I/O-bound tasks.
-Even with the GIL, I/O-bound tasks benefit from threading because
-the GIL is released during I/O operations.
-"""
+"""I/O-bound workload demo - threading benefits regardless of GIL status."""
 
 import sys
 import threading

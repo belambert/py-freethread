@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""
-CPU-Bound Workload Example
-
-Demonstrates the performance difference between threaded execution
-with and without the GIL for CPU-intensive tasks.
-"""
+"""CPU-bound workload demo - compare threaded performance with/without GIL."""
 
 import sys
 import threading
